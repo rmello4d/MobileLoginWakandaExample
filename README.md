@@ -6,6 +6,7 @@ Complete Wakanda Template for the Mobile with a Login and a splash page with a l
 <a href="url"><img src="https://github.com/rmello4d/MobileLoginWakandaExample/blob/master/screen2.png" align="left" height="20%" width="20%" ></a>
 </p>
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 # Installation (for Wakanda 2.2 or higher)
 
 1. Copy the folder /login-with-list to your local machine at Documents/Wakanda/templates/mobile/login-with-list
