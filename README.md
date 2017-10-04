@@ -1,10 +1,10 @@
 # MobileLoginWakandaExample
 Complete Wakanda Template for the Mobile with a Login and a splash page with a list of cards
-
+<p>
 <a href="url"><img src="https://github.com/rmello4d/MobileLoginWakandaExample/blob/master/screen.png" align="left" height="20%" width="20%" ></a>
 <a href="url"><img src="https://github.com/rmello4d/MobileLoginWakandaExample/blob/master/screen1.png" align="left" height="20%" width="20%" ></a>
 <a href="url"><img src="https://github.com/rmello4d/MobileLoginWakandaExample/blob/master/screen2.png" align="left" height="20%" width="20%" ></a>
-
+</p>
 
 # Installation (for Wakanda 2.2 or higher)
 
