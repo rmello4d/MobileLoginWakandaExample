@@ -31,7 +31,7 @@ Enjoy your template.
 
 
 # More info
-You can get more info about the code in this other repository https://github.com/rmello4d/WakandaEmailCustomLogin
+You can get more info about the Login code in this other repository https://github.com/rmello4d/WakandaEmailCustomLogin
 
-Or you can book a one-on-one demo with me where I will go through the details of this implementation here https://calendly.com/ricardo-mello/one-on-one
+Or you can book a one-on-one demo with me where I will go through the details of this implementation : https://calendly.com/ricardo-mello/one-on-one
 
