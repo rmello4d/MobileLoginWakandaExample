@@ -1,0 +1,159 @@
+{
+  "elements": [
+     {
+      "title": "component",
+      "description": "Generate a new component",
+      "command": "ionic g component {{options}}",
+      "options": [
+        {
+          "title": "Name",
+          "description": "New component's name",
+          "type": "input",
+          "validator": "",
+          "mandatory": true,
+          "command": "{{value}}"
+        },
+        {
+          "title": "Generate a specification file ",
+          "description": "specifies if a spec file is generated",
+          "type": "boolean",
+          "default": false,
+          "values": [
+            {
+              "value": "false",
+              "command": ""
+            },
+            {
+              "value": "true",
+              "command": "--includeSpec"
+            }
+          ]
+        },
+        {
+          "title": "Not create a scss for component",
+          "description": "specifies if a scss file is created",
+          "type": "boolean",
+          "default": false,
+          "values": [
+            {
+              "value": "false",
+              "command": ""
+            },
+            {
+              "value": "true",
+              "command": "--skipScss"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "page",
+      "description": "Generate a new page ",
+      "command": "ionic g page {{options}}",
+      "options": [
+        {
+          "title": "Name",
+          "description": "New page's name",
+          "type": "input",
+          "validator": "",
+          "mandatory": true,
+          "command": "{{value}}"
+        },
+        {
+          "title": "Generate a specification file ",
+          "description": "specifies if a spec file is generated",
+          "type": "boolean",
+          "default": false,
+          "values": [
+            {
+              "value": "false",
+              "command": ""
+            },
+            {
+              "value": "true",
+              "command": "--includeSpec"
+            }
+          ]
+        },
+        {
+          "title": "Not create a scss for page",
+          "description": "Not create a scss for page",
+          "type": "boolean",
+          "default": false,
+          "values": [
+            {
+              "value": "false",
+              "command": ""
+            },
+            {
+              "value": "true",
+              "command": "--skipScss"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "provider",
+      "description": "Generate a new provider ",
+      "command": "ionic g provider {{options}}",
+      "options": [
+        {
+          "title": "Name",
+          "description": "New provider's name",
+          "type": "input",
+          "validator": "",
+          "mandatory": true,
+          "command": "{{value}}"
+        }
+      ]
+    },
+    {
+      "title": "pipe",
+      "description": "Generate a new pipe ",
+      "command": "ionic g pipe {{options}}",
+      "options": [
+        {
+          "title": "Name",
+          "description": "New pipe's name",
+          "type": "input",
+          "validator": "",
+          "mandatory": true,
+          "command": "{{value}}"
+        }
+      ]
+    },
+    {
+      "title": "directive",
+      "description": "Generate a new directive ",
+      "command": "ionic g directive {{options}}",
+      "options": [
+        {
+          "title": "Name",
+          "description": "New directive's name",
+          "type": "input",
+          "validator": "",
+          "mandatory": true,
+          "command": "{{value}}"
+        },
+        {
+          "title": "Create directory for directives",
+          "description": "Create a specific directory for directives",
+          "type": "boolean",
+          "default": false,
+          "values": [
+            {
+              "value": "false",
+              "command": ""
+            },
+            {
+              "value": "true",
+              "command": "--directivesDir"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

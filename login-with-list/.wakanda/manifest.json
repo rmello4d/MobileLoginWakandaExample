@@ -1,0 +1,11 @@
+{
+  "name": "Login with a List (Cards)",
+  "description": "A template to get up and running with ionic 2.<br>Based on the Ionic CLI. <a href='http://ionicframework.com/docs' target='_blank'>Learn more</a>",
+  "tags": [
+    "Ionic 2",
+    "Angular 2",
+    "CLI",
+    "Cordova",
+    "Gulp"
+  ]
+}

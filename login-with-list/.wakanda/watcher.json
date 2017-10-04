@@ -1,0 +1,13 @@
+{
+    "start": {
+        "fileChanges": [
+          "/package.json$",
+          "/tsconfig.json$",
+          "/jsconfig.json$",
+          "/config.xml$",
+          "/ionic.config.json$"
+        ],
+        "events": [
+        ]
+    }
+}

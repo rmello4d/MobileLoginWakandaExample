@@ -1,0 +1,10 @@
+{
+  "name": "ionic2-template",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "proxies": [{
+    "path": "/rest",
+    "proxyUrl": "http://127.0.0.1:8081/rest"
+  }]
+}

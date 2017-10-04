@@ -1,0 +1,472 @@
+[
+  {
+    "taskName": "start",
+    "title": "Running Ionic2 App",
+    "type": "aggregate",
+    "dependencies": [
+      "install",
+      "update-proxy",
+      "selected-actions"
+    ]
+  },
+  {
+    "taskName": "install",
+    "title": "Installing dependencies",
+    "type": "aggregate",
+    "dependencies": [
+      "package-install"
+    ]
+  },
+  {
+    "taskName": "ionic-install",
+    "title": "Installing Ionic dependencies",
+    "type": "aggregate",
+    "dependencies": [
+      "install-plugin",
+      "add-platform-android",
+      "add-platform-ios",
+      "add-platform-windows"
+    ]
+  },
+  {
+    "taskName": "package-install",
+    "title": "Installing package.json dependencies",
+    "type": "package",
+    "options": {
+      "action": "install",
+      "path": "{{componentPath}}",
+      "command": "npm install -d",
+      "args": []
+    },
+    "stateVerifier" : {
+    	"name" : "package",
+    	"params" : {
+    		"key" : "dependencies"
+    	}
+
+    }
+  },
+  {
+    "taskName": "add-platform-android",
+    "title": "Adding Android platform",
+    "type": "command",
+    "if": "{{settings.android.platform}}",
+    "options": {
+      "command": "ionic platform add android"
+    },
+    "stateVerifier" : {
+    	"name" : "ionic",
+    	"params" : {
+    		"action" : "add-platform",
+    		"platform" : "android"
+    	}
+    }
+  },
+  {
+    "taskName": "add-platform-ios",
+    "title": "Adding iOS platform",
+    "type": "command",
+    "if": "{{settings.ios.platform}}",
+    "options": {
+      "command": "ionic platform add ios"
+    },
+    "stateVerifier" : {
+    	"name" : "ionic",
+    	"params" : {
+    		"action" : "add-platform",
+    		"platform" : "ios"
+    	}
+    }
+  },
+  {
+    "taskName": "add-platform-windows",
+    "title": "Adding Windows platform",
+    "type": "command",
+    "if": "{{settings.windows.platform}}",
+    "options": {
+      "command": "ionic platform add windows"
+    },
+    "stateVerifier" : {
+    	"name" : "ionic",
+    	"params" : {
+    		"action" : "add-platform",
+    		"platform" : "windows"
+    	}
+    }
+  },
+  {
+    "taskName": "install-plugin",
+    "title": "Installing Ionic plugins",
+    "type": "command",
+    "options": {
+      "command": "ionic state restore",
+      "args": [
+        "--plugins"
+      ]
+    },
+    "stateVerifier" : {
+    	"name" : "ionic",
+    	"params" : {
+    		"action" : "install-plugins",
+    		"key" : "plugins"
+    	}
+    }
+  },
+  {
+    "taskName": "update-proxy",
+    "title": "Updating DEV server proxy settings",
+    "type": "package",
+    "options": {
+      "action": "update-proxy",
+      "path": "{{componentPath}}",
+      "command": "npm run update-proxy",
+      "args": [
+        "--",
+        "--serverUrl",
+        "{{settings.serverUrl}}"
+      ]
+    }
+  },
+  {
+    "taskName": "selected-actions",
+    "title": "Running user selection",
+    "noWaitForEnd": true,
+    "type": "aggregate",
+    "dependencies": [
+      "preview",
+      "emulate-wrapper",
+      "run-wrapper"
+    ]
+  },
+  {
+  	"taskName": "preview",
+    "title": "Preview",
+    "noWaitForEnd": true,
+    "type": "aggregate",
+    "dependencies": [
+      "preview-android",
+      "preview-ios",
+      "preview-windows"
+    ],
+    "if": "{{settings.preview}}"
+  },
+  {
+  	"taskName": "emulate-wrapper",
+    "title": "Emulate",
+    "type": "aggregate",
+    "dependencies": [
+      "ionic-install",
+      "emulate"
+    ],
+    "if": "{{settings.emulate}}"
+  },
+  {
+  	"taskName": "emulate",
+    "title": "Launching emulators",
+    "noWaitForEnd": true,
+    "type": "aggregate",
+    "dependencies": [
+      "emulate-android",
+      "emulate-ios",
+      "emulate-windows"
+    ]
+  },
+  {
+  	"taskName": "run-wrapper",
+    "title": "Run",
+    "type": "aggregate",
+    "dependencies": [
+      "ionic-install",
+      "run"
+    ],
+    "if": "{{settings.run}}"
+  },
+  {
+  	"taskName": "run",
+    "title": "Running on device",
+    "noWaitForEnd": true,
+    "type": "aggregate",
+    "dependencies": [
+      "run-android",
+      "run-ios",
+      "run-windows"
+    ]
+  },
+  {
+    "taskName": "preview-android",
+    "title": "Preview on Android",
+    "type": "command",
+    "options": {
+      "command": "ionic serve",
+      "args": [
+        "--platform",
+        "android",
+        "--address",
+        "127.0.0.1",
+        "--port",
+        "{{port}}",
+        "--livereload-port",
+        "{{livereloadPort}}",
+        "--dev-logger-port",
+        "{{devLoggerPort}}"
+      ],
+      "variables": [
+        {
+          "name": "port",
+          "generator": "port",
+          "options": {
+            "port": 8100
+          }
+        },
+        {
+          "name": "livereloadPort",
+          "generator": "port",
+          "options": {
+            "port": 35729
+          }
+        },
+        {
+          "name": "devLoggerPort",
+          "generator": "port",
+          "options": {
+            "port": 53703
+          }
+        }
+      ]
+    },
+    "if": "{{settings.android.preview}}"
+  },
+  {
+    "taskName": "preview-ios",
+    "title": "Preview on iOS",
+    "type": "command",
+    "options": {
+      "command": "ionic serve",
+      "args": [
+        "--platform",
+        "ios",
+        "--address",
+        "127.0.0.1",
+        "--port",
+        "{{port}}",
+        "--livereload-port",
+        "{{livereloadPort}}",
+        "--dev-logger-port",
+        "{{devLoggerPort}}"
+      ],
+      "variables": [
+        {
+          "name": "port",
+          "generator": "port",
+          "options": {
+            "port": 8100
+          }
+        },
+        {
+          "name": "livereloadPort",
+          "generator": "port",
+          "options": {
+            "port": 35729
+          }
+        },
+        {
+          "name": "devLoggerPort",
+          "generator": "port",
+          "options": {
+            "port": 53703
+          }
+        }
+      ]
+    },
+    "if": "{{settings.ios.preview}}"
+  },
+  {
+    "taskName": "preview-windows",
+    "title": "Preview on Windows",
+    "type": "command",
+    "options": {
+      "command": "ionic serve",
+      "args": [
+        "--platform",
+        "windows",
+        "--address",
+        "127.0.0.1",
+        "--port",
+        "{{port}}",
+        "--livereload-port",
+        "{{livereloadPort}}",
+        "--dev-logger-port",
+        "{{devLoggerPort}}"
+      ],
+      "variables": [
+        {
+          "name": "port",
+          "generator": "port",
+          "options": {
+            "port": 8100
+          }
+        },
+        {
+          "name": "livereloadPort",
+          "generator": "port",
+          "options": {
+            "port": 35729
+          }
+        },
+        {
+          "name": "devLoggerPort",
+          "generator": "port",
+          "options": {
+            "port": 53703
+          }
+        }
+      ]
+    },
+    "if": "{{settings.windows.preview}}"
+  },
+  {
+    "taskName": "emulate-android",
+    "title": "Android emulator",
+    "type": "command",
+    "options": {
+      "command": "ionic emulate android",
+      "args": [
+        "--livereload",
+        "--port",
+        "{{port}}",
+        "--livereload-port",
+        "{{livereloadPort}}"
+      ],
+      "env":[
+      	{
+      		"name" : "ANDROID_HOME",
+      		"os" : "mac",
+      		"value" : {
+      			"type" : "preferences",
+      			"options" : "mobile.android.home"
+      		}
+      	}
+      ],
+      "variables": [
+        {
+          "name": "port",
+          "generator": "port",
+          "options": {
+            "port": 8100
+          }
+        },
+        {
+          "name": "livereloadPort",
+          "generator": "port",
+          "options": {
+            "port": 35729
+          }
+        }
+      ]
+    },
+    "if": "{{settings.android.emulate}}"
+  },
+  {
+    "taskName": "emulate-ios",
+    "title": "iOS emulator",
+    "type": "command",
+    "options": {
+      "command": "ionic emulate ios",
+      "args": [
+        "--livereload",
+        "--port",
+        "{{port}}",
+        "--livereload-port",
+        "{{livereloadPort}}"
+      ],
+      "variables": [
+        {
+          "name": "port",
+          "generator": "port",
+          "options": {
+            "port": 8100
+          }
+        },
+        {
+          "name": "livereloadPort",
+          "generator": "port",
+          "options": {
+            "port": 35729
+          }
+        }
+      ]
+    },
+    "if": "{{settings.ios.emulate}}"
+  },
+  {
+    "taskName": "emulate-windows",
+    "title": "Windows emulator",
+    "type": "command",
+    "options": {
+      "command": "ionic emulate windows",
+      "args": [
+        "--livereload",
+        "--port",
+        "{{port}}",
+        "--livereload-port",
+        "{{livereloadPort}}"
+      ],
+      "variables": [
+        {
+          "name": "port",
+          "generator": "port",
+          "options": {
+            "port": 8100
+          }
+        },
+        {
+          "name": "livereloadPort",
+          "generator": "port",
+          "options": {
+            "port": 35729
+          }
+        }
+      ]
+    },
+    "if": "{{settings.windows.emulate}}"
+  },
+  {
+    "taskName": "run-android",
+    "title": "Running on Android device",
+    "type": "command",
+    "options": {
+      "command": "ionic run android",
+      "args": [
+        "-slc",
+        "--device"
+      ]
+    },
+    "if": "{{settings.android.run}}"
+  },
+  {
+    "taskName": "run-ios",
+    "title": "Running on iOS device",
+    "type": "command",
+    "options": {
+      "command": "ionic run ios",
+      "args": [
+        "-slc",
+        "--device"
+      ]
+    },
+    "if": "{{settings.ios.run}}"
+  },
+  {
+    "taskName": "run-windows",
+    "title": "Running on Windows device",
+    "type": "command",
+    "options": {
+      "command": "ionic run windows",
+      "args": [
+        "-slc",
+        "--device"
+      ]
+    },
+    "if": "{{settings.windows.run}}"
+  }
+]

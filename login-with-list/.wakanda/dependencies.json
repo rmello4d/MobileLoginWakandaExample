@@ -1,0 +1,165 @@
+{
+  "dependencies": {
+    "brew": {
+      "name": "Brew",
+      "text": "Install Brew",
+      "optional": true,
+      "os": {
+        "mac": true
+      },
+      "command": "brew -v",
+      "troubleshooting": {
+        "app": "ios-app",
+        "step": 0
+      }
+    },
+    "xcode": {
+      "name": "Xcode",
+      "text": "Install Xcode",
+      "optional": true,
+      "os": {
+        "mac": true
+      },
+      "command": "xcodebuild -version",
+      "troubleshooting": {
+        "app": "ios-app",
+        "step": 1
+      }
+    },
+    "node": {
+      "name": "Node",
+      "text": "Install Node.JS",
+      "command": "node -v",
+      "troubleshooting": {
+        "mac": {
+          "app": "ios-app",
+          "step": 2
+        },
+        "windows": {
+          "app": "android-app",
+          "step": 0
+        }
+      }
+    },
+    "cordova": {
+      "name": "Cordova",
+      "text": "Install Cordova",
+      "command": "cordova -v",
+      "troubleshooting": {
+          "mac": {
+            "app": "ios-app",
+            "step": 3
+          },
+          "windows": {
+            "app": "android-app",
+            "step": 1
+          }
+      }
+    },
+    "ionic 2": {
+      "name": "Ionic 2",
+      "text": "Install Ionic 2",
+      "command": {
+        "windows": "ionic -v|findstr \"^2\"",
+        "mac": "ionic -v |grep \"^2\""
+      },
+      "troubleshooting": {
+        "mac": {
+          "app": "ios-app",
+          "step": 4
+        },
+        "windows": {
+          "app": "android-app",
+          "step": 2
+        }
+      }
+    },
+    "ios-sim": {
+      "name": "ios-sim",
+      "text": "Install ios-sim",
+      "optional": true,
+      "os": {
+        "mac": true
+      },
+      "command": "ios-sim --version",
+      "troubleshooting": {
+        "app": "ios-app",
+        "step": 5
+      }
+    },
+    "ios-deploy": {
+      "name": "ios-deploy",
+      "text": "Install ios-deploy",
+      "optional": true,
+      "os": {
+        "mac": true
+      },
+      "command": "ios-deploy --version",
+      "troubleshooting": {
+        "app": "ios-app",
+        "step": 6
+      }
+    },
+    "java": {
+      "name": "Java SDK",
+      "text": "Install Java JDK",
+      "command": {
+        "mac": "ls /Library/Java/JavaVirtualMachines | grep jdk1\\.8",
+        "windows": "where javac |findstr jdk1\\.8"
+      },
+      "troubleshooting": {
+          "mac": {
+            "app": "android-app",
+            "step": 4
+          },
+          "windows": {
+            "app": "android-app",
+            "step": 3
+          }
+      }
+    },
+    "java-home": {
+      "name": "Environment variable JAVA_HOME",
+      "text": "Configure the environment variable JAVA_HOME",
+      "os": {
+        "windows": true
+      },
+      "command": "echo %JAVA_HOME%",
+      "envVariable": "%JAVA_HOME%",
+      "troubleshooting": {
+        "app": "android-app",
+        "step": 3
+      }
+    },
+    "android": {
+      "name": "Android SDK",
+      "text": "Install Android SDK",
+      "optional": true,
+      "command": "adb version",
+      "troubleshooting": {
+          "mac": {
+            "app": "android-app",
+            "step": 5
+          },
+          "windows": {
+            "app": "android-app",
+            "step": 4
+          }
+      }
+    },
+    "android-home": {
+      "name": "Environment variable ANDROID_HOME",
+      "text": "Configure the environment variable ANDROID_HOME",
+      "optional": true,
+      "command": "echo %ANDROID_HOME%",
+      "envVariable": "%ANDROID_HOME%",
+      "os": {
+        "windows": true
+      },
+      "windows": {
+        "app": "android-app",
+        "step": 4
+      }
+    }
+  }
+}
